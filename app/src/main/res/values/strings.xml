@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="submit">Submit</string>
+    <string name="dark_sky_credit">Powered By\nDark Sky</string>
+    <string name="weather_location">Weather for \n %1$s</string>
 </resources>
