@@ -4,4 +4,8 @@
     <string name="submit">Submit</string>
     <string name="dark_sky_credit">Powered By\nDark Sky</string>
     <string name="weather_location">Weather for \n %1$s</string>
+    <string name="google_base_url">https://maps.googleapis.com/maps/api/geocode/</string>
+    <string name="dark_sky_base_url">https://api.darksky.net/forecast/</string>
+    <string name="google_api_key">AIzaSyDBTEU_c6kq6SkRnHqZjh7SGklJyyXk1CQ</string>
+    <string name="dark_sky_api_key">3adeb9536d888c39a3f600cfa0a10cd2</string>
 </resources>
