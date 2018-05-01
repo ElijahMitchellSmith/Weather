@@ -62,14 +62,14 @@ public class Weather implements Parcelable  {
         return latitude;
     }
 
-    public CurrentProperties getmCurrentProperties() {
+    public CurrentProperties getCurrentProperties() {
         return mCurrentProperties;
     }
 
-    public DailyProperties getmDailyProperties() {
+    public DailyProperties getDailyProperties() {
         return mDailyProperties;
     }
-    class CurrentProperties {
+    public class CurrentProperties  {
         @SerializedName("icon")
         private String icon;
         @SerializedName("summary")
@@ -77,16 +77,27 @@ public class Weather implements Parcelable  {
         @SerializedName("temperature")
         private double temperature;
 
+        public String getIcon() {
+            return icon;
+        }
+
+        public String getSummary() {
+            return summary;
+        }
+
+        public double getTemperature() {
+            return temperature;
+        }
     }
-    class DailyProperties {
+    public class DailyProperties {
         @SerializedName("data")
         private List<DailyData> dailyData;
 
-        public List<DailyData> getDailyData() {
+        public List<DailyData> getDailyDataList() {
             return dailyData;
         }
     }
-          class DailyData {
+          public class DailyData {
             @SerializedName("temperatureHigh")
             private double temperatureHigh;
             @SerializedName("temperatureLow")

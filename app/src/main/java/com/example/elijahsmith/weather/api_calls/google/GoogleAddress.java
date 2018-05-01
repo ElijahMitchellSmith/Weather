@@ -14,7 +14,7 @@ public class GoogleAddress {
         return resultsList;
     }
 
-    class Results{
+    public class Results{
 
         @SerializedName("formatted_address")
         private String formattedAddress;
@@ -30,15 +30,15 @@ public class GoogleAddress {
         public Geometry getGeometry() {
             return geometry;
         }
-         class Geometry {
+         public class Geometry {
 
             @SerializedName("location")
              private GoogleLocation mGoogleLocation;
 
-             public GoogleLocation getmGoogleLocation() {
+             public GoogleLocation getGoogleLocation() {
                  return mGoogleLocation;
              }
-             class GoogleLocation {
+             public class GoogleLocation {
                  @SerializedName("lat")
 
                  private double latitude;
