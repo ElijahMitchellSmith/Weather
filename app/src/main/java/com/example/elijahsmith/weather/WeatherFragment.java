@@ -18,6 +18,9 @@ import org.w3c.dom.Text;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.elijahsmith.weather.MainActivity.PLACE;
+import static com.example.elijahsmith.weather.MainActivity.WEATHER;
+
 public class WeatherFragment extends Fragment {
     private Weather weather;
     private String place;
@@ -45,6 +48,8 @@ public class WeatherFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_weather, container, false);
         ButterKnife.bind(this, view);
+        weather = getArguments().getParcelable(WEATHER);
+        place = getArguments().getString(PLACE);
         return view;
     }
 

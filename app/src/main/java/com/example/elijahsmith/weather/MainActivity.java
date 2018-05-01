@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        weatherFragment = WeatherFragment.newInstance();
+        bundle = new Bundle();
     }
 
     @Override
@@ -91,14 +93,20 @@ public class MainActivity extends AppCompatActivity {
         mGoogleGeoApi.getAddress(address, mGoogleApiKey).enqueue(new Callback<GoogleAddress>() {
             @Override
             public void onResponse(Call<GoogleAddress> call, Response<GoogleAddress> response) {
-                if (response.isSuccessful()) {
-                    bundle.putString(PLACE, response.body().getResultsList().get(0).getFormattedAddress());
-                    getWeather(response.body().getResultsList().get(0).getGeometry().getGoogleLocation().getLatitude(),
-                            response.body().getResultsList().get(0).getGeometry().getGoogleLocation().getLongitude());
+                try {
+                    if (response.isSuccessful()) {
+
+                        bundle.putString(PLACE, response.body().getResultsList().get(0).getFormattedAddress());
+                        getWeather(response.body().getResultsList().get(0).getGeometry().getGoogleLocation().getLatitude(),
+                                response.body().getResultsList().get(0).getGeometry().getGoogleLocation().getLongitude());
 
 
-                } else {
-                    Toast.makeText(MainActivity.this, "Call made, unsuccessful", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Call made, unsuccessful", Toast.LENGTH_LONG).show();
+
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "Try Again", Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -115,14 +123,19 @@ public class MainActivity extends AppCompatActivity {
         mDarkSkyApi.getWeather(mDarkSkyApiKey ,lat, lng).enqueue(new Callback<Weather>() {
             @Override
             public void onResponse(Call<Weather> call, Response<Weather> response) {
-                if (response.isSuccessful()) {
-                    bundle.putParcelable(WEATHER, response.body());
-                    weatherFragment.setArguments(bundle);
-                    transitionToWeatherFragment();
+                try {
+                    if (response.isSuccessful()) {
+                        bundle.putParcelable(WEATHER, response.body());
+                        weatherFragment.setArguments(bundle);
+                        transitionToWeatherFragment();
 
 
-                } else {
-                    Toast.makeText(MainActivity.this, "Call made, unsuccessful", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Call made, unsuccessful", Toast.LENGTH_LONG).show();
+
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "Try Again", Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -137,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void transitionToWeatherFragment() {
-        weatherFragment = WeatherFragment.newInstance();
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_holder, weatherFragment).commit();
     }
