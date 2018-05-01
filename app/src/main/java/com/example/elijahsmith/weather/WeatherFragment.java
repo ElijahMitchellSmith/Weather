@@ -72,6 +72,68 @@ public class WeatherFragment extends Fragment {
                 .getDailyDataList().get(0)
                 .getTemperatureLow())));
 
+        precipText.setText(getString(R.string.precip_chance_format, 100 * Math.ceil(weather
+                .getDailyProperties()
+                .getDailyDataList().get(0)
+                .getPrecipProbability())));
+
+        setWeatherIcon();
+
+
+    }
+
+    private void setWeatherIcon() {
+        switch (weather.getCurrentProperties().getIcon()) {
+
+            case "clear-day":
+                weatherIcon.setImageResource(R.drawable.clear_day);
+                mLayout.setBackgroundResource(R.color.sunColor);
+                break;
+            case "clear_night":
+                weatherIcon.setImageResource(R.drawable.clear_night);
+                mLayout.setBackgroundResource(R.color.nightColor);
+                break;
+            case "rain":
+                weatherIcon.setImageResource(R.drawable.rain);
+                mLayout.setBackgroundResource(R.color.rainColor);
+                break;
+            case "snow":
+                weatherIcon.setImageResource(R.drawable.snow);
+                mLayout.setBackgroundResource(R.color.snowColor);
+                break;
+            case "sleet":
+                weatherIcon.setImageResource(R.drawable.sleet);
+                mLayout.setBackgroundResource(R.color.sleetColor);
+                break;
+            case "wind":
+                weatherIcon.setImageResource(R.drawable.wind);
+                mLayout.setBackgroundResource(R.color.windColor);
+                break;
+            case "fog":
+                weatherIcon.setImageResource(R.drawable.fog);
+                mLayout.setBackgroundResource(R.color.fogColor);
+                break;
+            case "cloudy":
+                weatherIcon.setImageResource(R.drawable.cloudy);
+                mLayout.setBackgroundResource(R.color.cloudyColor);
+                break;
+            case "partly-cloudy-day":
+                weatherIcon.setImageResource(R.drawable.partly_cloudy_day);
+                mLayout.setBackgroundResource(R.color.cloudyColor);
+                break;
+            case "partly-cloudy-night":
+                weatherIcon.setImageResource(R.drawable.partly_cloudy_night);
+                mLayout.setBackgroundResource(R.color.cloudyColor);
+                break;
+            default:
+                weatherIcon.setImageResource(R.drawable.thunderstorm);
+                mLayout.setBackgroundResource(R.color.stormColor);
+                break;
+
+
+
+        }
+
 
     }
 }
