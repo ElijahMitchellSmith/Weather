@@ -60,13 +60,14 @@
         android:id="@+id/temperature_textview"
         android:layout_width="138dp"
         android:layout_height="84dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/current_temp_placeholder"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/precip_textview"

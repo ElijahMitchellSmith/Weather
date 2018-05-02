@@ -77,7 +77,7 @@ public class WeatherFragment extends Fragment {
                 .getDailyDataList().get(0)
                 .getTemperatureLow())));
 
-        precipText.setText(getString(R.string.precip_chance_format, 100 * Math.ceil(weather
+        precipText.setText(getString(R.string.precip_chance_format, 100 * (int)Math.ceil(weather
                 .getDailyProperties()
                 .getDailyDataList().get(0)
                 .getPrecipProbability())));
